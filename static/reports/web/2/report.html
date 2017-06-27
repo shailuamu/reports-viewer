@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+ <meta charset="ISO-8859-1">
+<title>Automation Test Report</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">/n<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript">
+ google.charts.load("current", {packages:["corechart"]});google.charts.setOnLoadCallback(drawChart);function drawChart() {var data = google.visualization.arrayToDataTable([['Status', 'Count'],['Not Run',1],['Pass',3],['Fail',0],]); var options = {width: 850, height: 350, slices: {  3: {offset: 0},  2: {offset: 0}, }, title: 'Automation Test Result',	colors: ['#B0B200', '#99ff99', '#ff1a1a'], is3D: true };; var chart = new google.visualization.PieChart(document.getElementById('autoGraph')); chart.draw(data, options);}
+</script>
+</head>
+<body>
+<div>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="position:fixed;" id="my-navbar">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse"">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" style="margin-bottom:2px;"></a>
+</div>
+<div class="collapse navbar-collapse" id="navbar-collapse">
+<ul class="nav navbar-nav nav-tabs" role="tablist">
+<li role="presentation" class="active"><a href="#TestSummary" aria-controls="TestSummary" role="tab" data-toggle="tab">Test Summary</a></li>
+<li role="presentation"><a href="#TestSuiteReport" aria-controls="TestSuiteReport" role="tab" data-toggle="tab">Test Suite Report</a></li>
+<li role="presentation"><a href="#TestCaseReport" aria-controls="TestCaseReport" role="tab" data-toggle="tab">Test Case Report</a></li>
+<li role="presentation"><a href="#LogsReport" aria-controls="LogsReport" role="tab" data-toggle="tab">Logs Report</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="TestSummary" style="margin-top: 60px;">
+<div class="container">
+<section>
+<div class="page-header" >
+<h2 >Test Summary 2</h2>
+</div>
+<div class="row">
+<div class="col-lg-4">
+<div class="table-responsive center-div">
+<table class="table table-bordered table-hover" style="width:100%;">
+<tr class="well">
+<td><b> PARAMETER</b></td>
+<td><b> VALUE</b></td>
+</tr>
+<tr>
+<td><b> Environment</b></td>
+<td>Ship Wreck</td>
+</tr>
+<tr>
+<td><b> Run Date</b></td>
+<td> 08-11-2016</td>
+</tr>
+<tr>
+<td><b> Run StartTime</b></td>
+<td>Tue Nov 08 17:31:59 IST 2016 </td>
+</tr>
+<tr>
+<td><b> Run EndTime</b></td>
+<td>Tue Nov 08 17:32:02 IST 2016 </td>
+</tr>
+<tr>
+<td><b> Time Taken</b></td>
+<td>00:00:3:453</td>
+</tr>
+<tr>
+<td><b>Total Test Cases</b></td>
+<td> 4</td>
+</tr>
+<tr>
+<td><b>Total Executed</b></td>
+<td> 3</td>
+</tr>
+<tr>
+<td><b>Total Passed</b></td>
+<td> 3</td>
+</tr>
+<tr>
+<td><b>Total Failed</b></td>
+<td> 0</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="col-lg-8">
+<div id="autoGraph" style="width: 100%;"></div></div>
+</div>
+</section>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="TestSuiteReport" style="margin-top: 60px;">
+<div class="container">
+<section>
+<div class="page-header">
+<h2>Test Suite Report</h2>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<td><b>SUITE_ID</b></td>
+<td><b>SUITE_NAME</b></td>
+<td><b>SUITE_DESC</b></td>
+<td><b>STATUS</b></td>
+<td><b>COMMENT</b></td>
+</tr>
+<tr>
+<td>S001</td>
+<td>SHIPWRECK</td>
+<td>Verify SHIPWRECK functionality</td>
+<td>NOT RUN</td>
+<td>Suite NOT RUN</td>
+</tr>
+</table>
+</div>
+</section>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="TestCaseReport" style="margin-top: 60px;">
+<div class="container">
+<section>
+<div class="page-header">
+<h2>Test Case Report</h2>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<th>TC ID</th>
+<th>MODULE NAME</th>
+<th>TC DESCRIPTION</th>
+<th>TIME</th>
+<th>STATUS</th>
+<th>COMMENT</th>
+<th> </th>
+<th> </th>
+</tr>
+<tr>
+<td>TC001</td>
+<td>SHIPWRECK</td>
+<td>Verify Home page functionality for Shipwreck</td>
+<td> </td>
+<td>NOT_RUN</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TC002</td>
+<td>SHIPWRECK</td>
+<td>Verify Shipwreck List</td>
+<td> </td>
+<td>NOT_RUN</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TC003</td>
+<td>SHIPWRECK</td>
+<td>Verify Add Shipwreck functionality</td>
+<td> </td>
+<td>NOT_RUN</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TC004</td>
+<td>SHIPWRECK</td>
+<td>Verify delete shipwreck functionality</td>
+<td> </td>
+<td>NOT_RUN</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+</section>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="LogsReport" style="margin-top: 60px;">
+<div class="container">
+<section>
+<div class="page-header" >
+<h2 >Logs Summary</h2>
+</div>
+<iframe src="D:\Testthon\AutomationProject\ShipWrekProject\Report\20161108\3\logs.txt" width="100%" height="300">
+</iframe>
+</section>
+</div>
+</div>
+</div>
+<div id="homePage_Verify" class="modal fade" role="dialog" style="top:20%;outline: none;width:100%;">
+<div class="modal-dialog modal-lg">
+<div class="modal-content" style="overflow:auto;height: 100%;">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">TC001 : Verify Home page functionality for Shipwreck</h4>
+</div>
+<div class="modal-body">
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<th>DATA_ROW_NO</th>
+<th>TC_KEY</th>
+<th>VERIFY_POINT</th>
+<th>VERIFY_DESC</th>
+<th>STATUS</th>
+<th>COMMENT</th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="shipwreckList_Verify" class="modal fade" role="dialog" style="top:20%;outline: none;width:100%;">
+<div class="modal-dialog modal-lg">
+<div class="modal-content" style="overflow:auto;height: 100%;">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">TC002 : Verify Shipwreck List</h4>
+</div>
+<div class="modal-body">
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<th>DATA_ROW_NO</th>
+<th>TC_KEY</th>
+<th>VERIFY_POINT</th>
+<th>VERIFY_DESC</th>
+<th>STATUS</th>
+<th>COMMENT</th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="addShipWreck_Verify" class="modal fade" role="dialog" style="top:20%;outline: none;width:100%;">
+<div class="modal-dialog modal-lg">
+<div class="modal-content" style="overflow:auto;height: 100%;">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">TC003 : Verify Add Shipwreck functionality</h4>
+</div>
+<div class="modal-body">
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<th>DATA_ROW_NO</th>
+<th>TC_KEY</th>
+<th>VERIFY_POINT</th>
+<th>VERIFY_DESC</th>
+<th>STATUS</th>
+<th>COMMENT</th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="deleteShipWreck_Verify" class="modal fade" role="dialog" style="top:20%;outline: none;width:100%;">
+<div class="modal-dialog modal-lg">
+<div class="modal-content" style="overflow:auto;height: 100%;">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">TC004 : Verify delete shipwreck functionality</h4>
+</div>
+<div class="modal-body">
+<div class="table-responsive">
+<table class="table table-bordered table-hover" style="width:100%">
+<tr class="well">
+<th>DATA_ROW_NO</th>
+<th>TC_KEY</th>
+<th>VERIFY_POINT</th>
+<th>VERIFY_DESC</th>
+<th>STATUS</th>
+<th>COMMENT</th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
