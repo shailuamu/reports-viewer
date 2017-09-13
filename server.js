@@ -20,6 +20,7 @@ app.use(function(req, res) {
   res.status(404).send({url : path, message : 'API is not available'})
 });
 
+process.env.BASE_REPORT_DIR = "/d/Tech/Nodejs/reports-viewer/static/reports/";
 var PORT = process.env.PORT || 2222;
 app.listen(PORT, function() {
   console.log('Server is listening on port - ' + PORT);

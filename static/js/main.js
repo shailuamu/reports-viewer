@@ -1,72 +1,79 @@
 var appModule = angular.module('app', []);
 
 appModule.controller('PageController', ['$scope', '$http', function($scope, $http) {
+    var pageUrl = "reports/REPORT-NAME/BUILD/index.html";
+    $scope.builds = [];
+    $scope.tabs = [];
+	$scope.subtabs = [];
+	$scope.currentTab = "";
+	$scope.currentSubtab = "";
+	$scope.pageTitle = "";
 
-$scope.builds = [];
-$scope.pageTitle = "Junit Report";
+    $scope.getReports = function() {
+      var path = '/v1/reports';
+      $http.get(path).then(function(response) {
+          console.log('response - ' + response.data);
+          $scope.tabs = response.data;
 
-var buildConfig = {
-  junitPage : {
-    url : "reports/junit/BUILD/index.html",
-    title : "Junit Report",
-    pageCode : 'junit'
-  },
-  staticAnalysisPage : {
-    url : "reports/static-analysis/BUILD/report.html",
-    title : "Static Analysis Report",
-    pageCode : 'static-analysis'
-  },
-  webPage : {
-    url : "reports/web/BUILD/report.html",
-    title : "Web Report",
-    pageCode : 'web'
-  },
-  apiPage : {
-    url : "reports/api/BUILD/index.html",
-    title : "API Report",
-    pageCode : 'api'
-  },
-  appPage : {
-    url : "reports/app/BUILD/index.html",
-    title : "App Report",
-    pageCode : 'app'
-  }
-};
-
-$scope.tabs = [buildConfig.junitPage, buildConfig.staticAnalysisPage, buildConfig.webPage, buildConfig.apiPage, buildConfig.appPage];
-
-
-function getfolders(pageCode, cb) {
-  var path = '/v1/folders/' + pageCode;
-  $http.get(path).then(function(response) {
-      console.log('response - ' + response.data);
-      $scope.builds = response.data;
-      cb(pageCode);
-  });
-}
+          $scope.setPage($scope.tabs[0]);
+		  //getSubtabs($scope.tabs[0]);
+      });
+    }
 
     $scope.setPage = function(pageCode) {
-      getfolders(pageCode, setPageCallback);
+      var path = '/v1/folders/' + pageCode;
+      $scope.pageTitle = pageCode + " REPORT";
+	  $scope.currentTab = pageCode;
+	  $scope.subtabs = [];
+      $http.get(path).then(function(response) {
+          console.log('Sub page code response - ' + response.data);
+          var subtabs = response.data;
+
+		  var buildHistoryPath = pageCode;
+		  if(subtabs != undefined && subtabs.length > 0) {
+			  var isnum = /^\d+$/.test(subtabs[0]);
+			  if(!isnum) {
+				console.log('***********');
+				$scope.subtabs = subtabs;
+				$scope.currentSubtab = $scope.subtabs[0];
+				$scope.pageTitle = $scope.currentTab + ' >> ' + $scope.currentSubtab + " REPORT";
+				buildHistoryPath = pageCode + '/' + $scope.subtabs[0];
+			  }
+		  }
+		  console.log('Build History Path ' + buildHistoryPath);
+
+		  getBuildHistory(buildHistoryPath, setPageCallback);
+      });
+    }
+
+	$scope.setSubPage = function(subTab) {
+      $scope.pageTitle = $scope.currentTab + ' >> ' + subTab + " REPORT";
+      $scope.currentSubtab = subTab;
+	  var buildHistoryPath = $scope.currentTab + '/' + subTab;
+	  var path = '/v1/folders/' + buildHistoryPath;
+	  getBuildHistory(buildHistoryPath, setPageCallback);
+
+    }
+
+    function getBuildHistory(pageCode, cb) {
+      var path = '/v1/folders/' + pageCode;
+      $http.get(path).then(function(response) {
+          console.log('response - ' + response.data);
+          $scope.builds = response.data;
+          cb(pageCode);
+      });
     }
 
     function setPageCallback(pageCode) {
-      var pageUrl = "";
-
-      for(var i in $scope.tabs) {
-        var tab = $scope.tabs[i];
-        if(tab.pageCode == pageCode) {
-          pageUrl = tab.url;
-          $scope.pageTitle = tab.title;
-        }
-      }
       $scope.pageUrl = pageUrl;
-      pageUrl = pageUrl.replace('BUILD', $scope.builds[0]);
-      $('#content-frame').attr('src', pageUrl);
+      $scope.pageUrl = $scope.pageUrl.replace('REPORT-NAME', pageCode);
+      $scope.pageUrl = $scope.pageUrl.replace('BUILD', $scope.builds[0]);
+      $('#content-frame').attr('src', $scope.pageUrl);
     }
 
     $scope.changeBuildReport= function(buildNumber) {
       var pageUrl = $scope.pageUrl;
-      pageUrl = pageUrl.replace('BUILD', buildNumber);
+      pageUrl = pageUrl.lastreplace('BUILD', buildNumber);
       $('#content-frame').attr('src', pageUrl);
     }
 
