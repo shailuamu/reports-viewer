@@ -8,6 +8,7 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
 	$scope.currentTab = "";
 	$scope.currentSubtab = "";
 	$scope.pageTitle = "";
+	$scope.currentBuildNumber = "";
 
     $scope.getReports = function() {
       var path = '/v1/reports';
@@ -67,14 +68,22 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
     function setPageCallback(pageCode) {
       $scope.pageUrl = pageUrl;
       $scope.pageUrl = $scope.pageUrl.replace('REPORT-NAME', pageCode);
+      $scope.currentBuildNumber = $scope.builds[0];
       $scope.pageUrl = $scope.pageUrl.replace('BUILD', $scope.builds[0]);
       $('#content-frame').attr('src', $scope.pageUrl);
     }
 
     $scope.changeBuildReport= function(buildNumber) {
+      $scope.currentBuildNumber = buildNumber;
+      var reportName = $scope.currentTab;
+      if($scope.currentSubtab != undefined && $scope.currentSubtab != "") {
+              reportName = reportName + '/' + $scope.currentSubtab;
+      }
       var pageUrl = $scope.pageUrl;
-      pageUrl = pageUrl.lastreplace('BUILD', buildNumber);
+      pageUrl = pageUrl.replace('REPORT-NAME', reportName);
+      pageUrl = pageUrl.replace('BUILD', buildNumber);
       $('#content-frame').attr('src', pageUrl);
+
     }
 
 }]);

@@ -5,6 +5,10 @@ var app = express();
 
 app.use(bodyParser.json());
 
+var BASE_REPORT_DIR = "/home/ubuntu/cube-data/reports/";
+process.env.BASE_REPORT_DIR = BASE_REPORT_DIR;
+app.use(express.static('/home/ubuntu/cube-data'));
+
 app.use(express.static(__dirname + '/static'));
 
 app.route('/builds').get(function(req, res){
@@ -20,7 +24,6 @@ app.use(function(req, res) {
   res.status(404).send({url : path, message : 'API is not available'})
 });
 
-process.env.BASE_REPORT_DIR = "/d/Tech/Nodejs/reports-viewer/static/reports/";
 var PORT = process.env.PORT || 2222;
 app.listen(PORT, function() {
   console.log('Server is listening on port - ' + PORT);
