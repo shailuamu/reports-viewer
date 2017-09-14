@@ -67,8 +67,8 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
 
     function setPageCallback(pageCode) {
       var pageUrl = defaultPageUrl;
-      pageUrl = $scope.pageUrl.replace('REPORT-NAME', pageCode);
       $scope.currentBuildNumber = $scope.builds[0];
+      pageUrl = pageUrl.replace('REPORT-NAME', pageCode);
       pageUrl = pageUrl.replace('BUILD', $scope.builds[0]);
       $('#content-frame').attr('src', pageUrl);
     }

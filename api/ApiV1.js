@@ -2,7 +2,7 @@ var fs = require('fs');
 
 module.exports = function(app) {
 
-var BASE_REPORT_DIR = process.env.BASE_REPORT_DIR || '/home/ubuntu/cube-data/reports/';
+var BASE_REPORT_DIR = process.env.BASE_REPORT_DIR || './static/reports/';
 
   app.route('/v1/folders/:name').get(function(req, res){
         var param = req.params.name;
