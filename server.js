@@ -1,8 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var apiV1 = require('./api/ApiV1');
+var basicAuth = require('basic-auth-connect');
+
 var app = express();
 
+app.use(basicAuth('username', 'password'));
 app.use(bodyParser.json());
 
 var BASE_REPORT_DIR = "/home/ubuntu/cube-data/reports/";
