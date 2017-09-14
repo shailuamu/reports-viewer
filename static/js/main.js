@@ -1,7 +1,7 @@
 var appModule = angular.module('app', []);
 
 appModule.controller('PageController', ['$scope', '$http', function($scope, $http) {
-    var pageUrl = "reports/REPORT-NAME/BUILD/index.html";
+    var defaultPageUrl = "reports/REPORT-NAME/BUILD/index.html";
     $scope.builds = [];
     $scope.tabs = [];
 	$scope.subtabs = [];
@@ -66,11 +66,11 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
     }
 
     function setPageCallback(pageCode) {
-      $scope.pageUrl = pageUrl;
-      $scope.pageUrl = $scope.pageUrl.replace('REPORT-NAME', pageCode);
+      var pageUrl = defaultPageUrl;
+      pageUrl = $scope.pageUrl.replace('REPORT-NAME', pageCode);
       $scope.currentBuildNumber = $scope.builds[0];
-      $scope.pageUrl = $scope.pageUrl.replace('BUILD', $scope.builds[0]);
-      $('#content-frame').attr('src', $scope.pageUrl);
+      pageUrl = pageUrl.replace('BUILD', $scope.builds[0]);
+      $('#content-frame').attr('src', pageUrl);
     }
 
     $scope.changeBuildReport= function(buildNumber) {
@@ -79,7 +79,7 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
       if($scope.currentSubtab != undefined && $scope.currentSubtab != "") {
               reportName = reportName + '/' + $scope.currentSubtab;
       }
-      var pageUrl = $scope.pageUrl;
+      var pageUrl = defaultPageUrl;
       pageUrl = pageUrl.replace('REPORT-NAME', reportName);
       pageUrl = pageUrl.replace('BUILD', buildNumber);
       $('#content-frame').attr('src', pageUrl);

@@ -5,7 +5,7 @@ var basicAuth = require('basic-auth-connect');
 
 var app = express();
 
-app.use(basicAuth('username', 'password'));
+app.use(basicAuth('admin', 'cube@2017'));
 app.use(bodyParser.json());
 
 var BASE_REPORT_DIR = "/home/ubuntu/cube-data/reports/";
