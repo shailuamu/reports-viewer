@@ -26,6 +26,7 @@ appModule.controller('PageController', ['$scope', '$http', function($scope, $htt
       $scope.pageTitle = pageCode + " REPORT";
 	  $scope.currentTab = pageCode;
 	  $scope.subtabs = [];
+	  $scope.currentSubtab = "";
       $http.get(path).then(function(response) {
           console.log('Sub page code response - ' + response.data);
           var subtabs = response.data;
